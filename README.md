@@ -22,7 +22,7 @@ use smp25519;
 use std::io::Write;
 use base64::Engine;
 
-const KNOWN_SERVER_PULIC_KEY: &str = "Vh4DBTYyDbwTqg1eZzTnuTxThscIoNQgLpxgsBCOFCU=";
+const KNOWN_SERVER_PUBLIC_KEY: &str = "Vh4DBTYyDbwTqg1eZzTnuTxThscIoNQgLpxgsBCOFCU=";
 const SERVER_ADDR: &str = "127.0.0.1:12000";
 const BUFFER_SIZE: usize = 1024;
 const MAX_REPONSE_SIZE: usize = BUFFER_SIZE + smp25519::SMP25519_CONNECTION_ID_SIZE;
@@ -35,7 +35,7 @@ fn main() -> std::io::Result<()> {
     let (private_key, public_key, connection_id) = smp25519::generate_identity();
 
     // Step 2 (RECOMMENDED): Define the server's known public key (Base64 encoded).
-    let known_server_public_key = base64::prelude::BASE64_STANDARD.decode(KNOWN_SERVER_PULIC_KEY).unwrap();
+    let known_server_public_key = base64::prelude::BASE64_STANDARD.decode(KNOWN_SERVER_PUBLIC_KEY).unwrap();
 
     // Step 3: Create a UDP socket.
     let socket = std::net::UdpSocket::bind("127.0.0.1:0").unwrap();
