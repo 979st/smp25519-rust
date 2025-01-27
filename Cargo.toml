@@ -1,6 +1,6 @@
 [package]
 name = "smp25519"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 authors = ["TrueBreaker <truebreaker@proton.me>"]
 description = "Secure Messaging Protocol 25519"
