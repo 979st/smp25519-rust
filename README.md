@@ -25,7 +25,7 @@ use base64::Engine;
 const KNOWN_SERVER_PUBLIC_KEY: &str = "Vh4DBTYyDbwTqg1eZzTnuTxThscIoNQgLpxgsBCOFCU=";
 const SERVER_ADDR: &str = "127.0.0.1:12000";
 const BUFFER_SIZE: usize = 1024;
-const MAX_REPONSE_SIZE: usize = BUFFER_SIZE + smp25519::SMP25519_CONNECTION_ID_SIZE;
+const MAX_RESPONSE_SIZE: usize = BUFFER_SIZE + smp25519::SMP25519_CONNECTION_ID_SIZE;
 
 // Secure UDP client example using the smp25519 crate.
 // This example demonstrates how to establish a secure communication channel
@@ -90,7 +90,7 @@ fn main() -> std::io::Result<()> {
         socket.send_to(&buf[..bytes_written], SERVER_ADDR).unwrap();
 
         // Receive and decrypt the server's response.
-        let mut buf2 = [0u8; MAX_REPONSE_SIZE];
+        let mut buf2 = [0u8; MAX_RESPONSE_SIZE];
         let (amt, src) = socket.recv_from(&mut buf2).unwrap();
         let bytes_written = smp25519::decrypt_received_data(&buf2[..amt], &shared_secret, &mut buf);
         println!("Server response from {}: {}", src.to_string(), std::str::from_utf8(&buf[..bytes_written]).unwrap());
