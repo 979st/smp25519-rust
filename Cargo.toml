@@ -1,0 +1,20 @@
+[package]
+name = "smp25519"
+version = "1.0.0"
+edition = "2021"
+authors = ["TrueBreaker <truebreaker@proton.me>"]
+description = "Secure Messaging Protocol 25519"
+license = "UNLICENSED"
+repository = "https://github.com/979st/smp25519-rust"
+documentation = "https://docs.rs/smp25519"
+readme = "README.md"
+keywords = ["sockets", "udp", "protocol", "messaging", "secure", "x25519", "chacha20", "blake3", "rust", "network"]
+categories = ["api-bindings", "network-programming"]
+
+[dependencies]
+blake3 = "1.5.5"
+chacha20 = "0.9.1"
+x25519-dalek = {version = "2.0.1", features = ["static_secrets", "getrandom"]}
+
+[dev-dependencies]
+base64 = "0.22.1"
